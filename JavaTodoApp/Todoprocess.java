@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Todoprocess{
 
-  private static void runTaskManagementMode(TodoService service, Scanner scanner){
+  public static void runTaskManagementMode(TodoService service, Scanner scanner){
    while(true){
     System.out.println("タスク処理をしよう!");
     System.out.println("list: 一覧表示, done 半角数字: 完了処理, exit: 退出");
@@ -27,7 +27,7 @@ public class Todoprocess{
     }
    System.out.println("----タスク一覧----");
    int index = 1;
-   for(Task task : service.getTasks())
+   for(Task task : service.getTasks()){
     System.out.println(index + ":" + task);
     index++;
    }
@@ -50,4 +50,5 @@ public class Todoprocess{
   }
 
 }
+
 
