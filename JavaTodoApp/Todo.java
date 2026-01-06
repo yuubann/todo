@@ -18,8 +18,12 @@ public class Todo{
       }else if(input.equals("input")){
        Todoprocess.runTaskManagementMode(service, scanner);
       }else{
-        service.addTask(input);
+        if (input.trim().isEmpty()) {
+         System.out.println("タスク名を入力してください。");
+        }else{
+         service.addTask(input);
       }
     }
   }
+}
 }
