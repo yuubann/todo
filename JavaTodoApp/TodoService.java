@@ -49,7 +49,7 @@ public class TodoService{
         File file = new File(FILE_NAME);
         if (!file.exists()) return; // ファイルがなければ何もしない
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileReader(file), StandardCharsets.UTF_8)) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileReader(file), StandardCharsets.UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -62,7 +62,6 @@ public class TodoService{
                     tasks.add(task);
             }
             } 
-            }
             }catch (IOException e) {
             System.out.println("読み込み中にエラーが発生しました: " + e.getMessage());
             }
@@ -71,3 +70,4 @@ public class TodoService{
 
  
              
+
