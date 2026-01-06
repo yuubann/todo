@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class TodoService{
 
@@ -33,7 +34,7 @@ public class TodoService{
 
  // ファイルへ保存するメソッド
     private void saveToFile() {
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(FILE_NAME)))) {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileWriter(FILE_NAME), StandardCharsets.UTF_8)))) {
             for (Task task : tasks) {
                 // 「タスク名,完了状態」の形式で保存
                 writer.println(task.getTitle() + "," + task.isDone());
@@ -48,7 +49,7 @@ public class TodoService{
         File file = new File(FILE_NAME);
         if (!file.exists()) return; // ファイルがなければ何もしない
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileReader(file), StandardCharsets.UTF_8)) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -59,11 +60,14 @@ public class TodoService{
                     Task task = new Task(title);
                     if (isDone) task.markDone(); // 完了済みなら状態を復元
                     tasks.add(task);
-                }
             }
-        } catch (IOException e) {
+            } 
+            }
+            }catch (IOException e) {
             System.out.println("読み込み中にエラーが発生しました: " + e.getMessage());
+            }
         }
-    }
 }
 
+ 
+             
