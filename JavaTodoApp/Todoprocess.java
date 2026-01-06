@@ -9,11 +9,11 @@ public class Todoprocess{
     System.out.println("list: 一覧表示, done 半角数字: 完了処理, exit: 退出");
     String command = scanner.nextLine();
 
-     if(command.equal("exit")){
+     if(command.equals("exit")){
       break; //これで呼び出し元(main)に戻ります
-     }else if(command.equals("list"){
+     }else if(command.equals("list")){
       printTaskList(service);
-     }else if(command.startWith("done")){
+     }else if(command.startsWith("done")){
       handleDone(service, command);
      }
     }
@@ -24,7 +24,7 @@ public class Todoprocess{
    int index = 1;
    for(Task task : service.getTasks())
     System.out.println(index + ":" + task);
-    index++
+    index++;
    }
   }
 
@@ -32,7 +32,7 @@ public class Todoprocess{
    String[] parts = command.split(" ");
    try{
     int inputIndex = Integer.parseInt(parts[1]);
-    int ListIndex = inputIndex - 1; //ユーザーの入力からリストの添字へ変換
+    int listIndex = inputIndex - 1; //ユーザーの入力からリストの添字へ変換
 
     if(service.completeTask(listIndex)){
      System.out.println("完了しました!");
@@ -43,4 +43,5 @@ public class Todoprocess{
     System.out.println("有効な番号を入力してください");
    }
   }
+
 }
