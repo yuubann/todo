@@ -20,6 +20,11 @@ public class Todoprocess{
    }
 
   private static void printTaskList(TodoService service){
+    List<Task> tasks = service.getTasks();
+    if (tasks.isEmpty()) {
+        System.out.println("現在、登録されているタスクはありません。");
+        return;
+    }
    System.out.println("----タスク一覧----");
    int index = 1;
    for(Task task : service.getTasks())
@@ -45,3 +50,4 @@ public class Todoprocess{
   }
 
 }
+
