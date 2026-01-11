@@ -21,3 +21,5 @@ Javaの基礎学習として作成した、コマンドラインで動作する�
   javac -encoding UTF-8 *.java
 2.実行
   java -Dfile.encoding=UTF-8 Todo
+　コマンドプロンプトで実行する場合、「chcp 65001」と入力し、コマンドプロンプトでもUTF-8を指定してください。
+
