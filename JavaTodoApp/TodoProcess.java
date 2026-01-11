@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.List;
 
-public class Todoprocess{
+public class TodoProcess{
 
   public static void runTaskManagementMode(TodoService service, Scanner scanner){
    while(true){
@@ -35,6 +35,13 @@ public class Todoprocess{
 
   private static void handleDone(TodoService service, String command){
    String[] parts = command.split(" ");
+
+   //引数があるかチェック
+   if(parts.length < 2){
+    System.out.println("番号を指定してください(例: done 1)");
+    return;
+   }
+
    try{
     int inputIndex = Integer.parseInt(parts[1]);
     int listIndex = inputIndex - 1; //ユーザーの入力からリストの添字へ変換
@@ -42,10 +49,10 @@ public class Todoprocess{
     if(service.completeTask(listIndex)){
      System.out.println("完了しました!");
     }else{
-     System.out.println("番号が不正です");
+     System.out.println("指定された番号のタスクが見つかりません");
     }
    }catch(Exception e){ //要素不足や数値エラーをまとめてキャッチ
-    System.out.println("有効な番号を入力してください");
+    System.out.println("有効な番号を入力してください。");
    }
   }
 
