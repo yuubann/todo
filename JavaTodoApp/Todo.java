@@ -7,6 +7,7 @@ public class Todo{
 
     Scanner scanner = new Scanner(System.in);
     TodoService service = new TodoService();
+    System.out.println(System.getProperty("file.encoding"));
 
     while(true){
       System.out.println("タスクを入力しよう！");
@@ -16,7 +17,7 @@ public class Todo{
       if(input.equals("exit")){
         break;
       }else if(input.equals("input")){
-       Todoprocess.runTaskManagementMode(service, scanner);
+       TodoProcess.runTaskManagementMode(service, scanner);
       }else{
         if (input.trim().isEmpty()) {
          System.out.println("タスク名を入力してください。");
@@ -27,3 +28,4 @@ public class Todo{
   }
 }
 }
+
